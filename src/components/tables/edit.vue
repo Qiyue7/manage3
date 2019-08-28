@@ -2,7 +2,8 @@
   <div class="tables-edit-outer">
     <div v-if="!isEditting" class="tables-edit-con">
       <span class="value-con">{{ value }}</span>
-      <Button v-if="editable" @click="startEdit" class="tables-edit-btn" style="padding: 2px 4px;" type="text"><Icon type="md-create"></Icon></Button>
+      <!-- <Icon type="md-create"></Icon> 编辑-->
+      <Button v-if="editable" @click="startEdit" class="tables-edit-btn" style="padding: 2px 4px;" type="text">编辑</Button>
     </div>
     <div v-else class="tables-editting-con">
       <Input :value="value" @input="handleInput" class="tables-edit-input"/>
@@ -56,7 +57,7 @@ export default {
       position: absolute;
       right: 10px;
       top: 0;
-      display: none;
+      // display: none;
     }
     &:hover{
       .tables-edit-btn{

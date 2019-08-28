@@ -7,6 +7,10 @@
       <Input @on-change="handleClear" clearable placeholder="输入关键字搜索" class="search-input" v-model="searchValue"/>
       <Button @click="handleSearch" class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;搜索</Button>
     </div>
+    <ButtonGroup>
+        <Button type="primary">添加</Button>
+        <Button type="error">批量删除</Button>
+    </ButtonGroup>
     <Table
       ref="tablesMain"
       :data="insideTableData"
@@ -34,18 +38,11 @@
       @on-row-dblclick="onRowDblclick"
       @on-expand="onExpand"
     >
+      <!-- <slot name="header" slot="header">用户列表。标[*]列,均为可点击单元格修改,回车键保存</slot> -->
       <slot name="header" slot="header"></slot>
       <slot name="footer" slot="footer"></slot>
       <slot name="loading" slot="loading"></slot>
     </Table>
-    <div v-if="searchable && searchPlace === 'bottom'" class="search-con search-con-top">
-      <Select v-model="searchKey" class="search-col">
-        <Option v-for="item in columns" v-if="item.key !== 'handle'" :value="item.key" :key="`search-col-${item.key}`">{{ item.title }}</Option>
-      </Select>
-      <Input placeholder="输入关键字搜索" class="search-input" v-model="searchValue"/>
-      <Button class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;搜索</Button>
-    </div>
-    <a id="hrefToExportTable" style="display: none;width: 0px;height: 0px;"></a>
   </div>
 </template>
 
@@ -77,11 +74,11 @@ export default {
     },
     stripe: {
       type: Boolean,
-      default: false
+      default: true
     },
     border: {
       type: Boolean,
-      default: false
+      default: true
     },
     showHeader: {
       type: Boolean,
@@ -89,7 +86,7 @@ export default {
     },
     highlightRow: {
       type: Boolean,
-      default: false
+      default: true
     },
     rowClassName: {
       type: Function,
@@ -118,14 +115,14 @@ export default {
      */
     editable: {
       type: Boolean,
-      default: false
+      default: true
     },
     /**
      * @description 是否可搜索
      */
     searchable: {
       type: Boolean,
-      default: false
+      default: true
     },
     /**
      * @description 搜索控件所在位置，'top' / 'bottom'
@@ -275,3 +272,6 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+</style>

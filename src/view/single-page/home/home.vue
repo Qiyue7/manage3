@@ -1,33 +1,15 @@
 <template>
   <div>
-    <Row :gutter="20">
-      <i-col :xs="12" :md="8" :lg="4" v-for="(infor, i) in inforCardData" :key="`infor-${i}`" style="height: 120px;padding-bottom: 10px;">
-        <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
-          <count-to :end="infor.count" count-class="count-style"/>
-          <p>{{ infor.title }}</p>
-        </infor-card>
-      </i-col>
-    </Row>
-    <Row :gutter="20" style="margin-top: 10px;">
-      <i-col :md="24" :lg="8" style="margin-bottom: 20px;">
-        <Card shadow>
-          <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
-        </Card>
-      </i-col>
-      <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
-        <Card shadow>
-          <chart-bar style="height: 300px;" :value="barData" text="每周用户活跃量"/>
-        </Card>
-      </i-col>
-    </Row>
-    <Row>
-      <Card shadow>
-        <example style="height: 310px;"/>
-      </Card>
-    </Row>
+      <ul class="c_top">
+        <li>导入模板<span>(必须使用微软的office Excel否则不能导入)</span></li>
+        <li>模板名称 <span class="c_right" href="#">下载</span></li>
+      </ul>
+      <Row v-for="(infor, i) in inforCardData" :key="`infor-${i}`" style="height:35spx;border-bottom:1px solid #ccc;background:#ffffff;">
+        <p class="c_left">{{ infor.title }}</p>
+        <a class="c_right" href="#">下载</a>
+      </Row>
   </div>
 </template>
-
 <script>
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
@@ -45,12 +27,16 @@ export default {
   data () {
     return {
       inforCardData: [
-        { title: '新增用户', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
-        { title: '累计点击', icon: 'md-locate', count: 232, color: '#19be6b' },
-        { title: '新增问答', icon: 'md-help-circle', count: 142, color: '#ff9900' },
-        { title: '分享统计', icon: 'md-share', count: 657, color: '#ed3f14' },
-        { title: '新增互动', icon: 'md-chatbubbles', count: 12, color: '#E46CBB' },
-        { title: '新增页面', icon: 'md-map', count: 14, color: '#9A66E4' }
+        { title: '单片模板下载' },
+        { title: '剧集模板下载' },
+        { title: '章节模板下载' },
+        { title: '纸书模板下载' },
+        { title: '听书模板下载' },
+        { title: '文本电子书下载' },
+        { title: '选择题模板下载' },
+        { title: '判断题模板下载' },
+        { title: '问卷题模板下载' },
+        { title: 'EPUB电子书工具(Sigil-0.9.9-Windows-x64-Setup.exe)' }
       ],
       pieData: [
         { value: 335, name: '直接访问' },
@@ -77,7 +63,39 @@ export default {
 </script>
 
 <style lang="less">
-.count-style{
-  font-size: 50px;
+.c_left{
+  line-height: 35px;
+  margin-left: 10px;
+  color:#000000;
+  float: left;
+}
+.c_right{
+  float: right;
+  margin-right: 40px;
+  line-height: 35px;
+}
+.c_top{
+  list-style:none;
+}
+.c_top li{
+  border-bottom:1px solid #ccc;
+  height:35px;
+  line-height: 35px;
+  padding-left: 10px;
+}
+.c_top li:first-child{
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  color: #000000;
+}
+.c_top li:first-child span{
+  color:#ff0000;
+}
+.c_top li:nth-child(2){
+  background: #ffffff;
+   font-size: 14px;
+   color: #000000;
+   font-weight: 700;
 }
 </style>
